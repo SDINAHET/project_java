@@ -39,9 +39,11 @@ public class SecurityConfig {
         http.csrf().disable() // Désactive CSRF (optionnel, à activer en production)
             .authorizeHttpRequests()
             .requestMatchers("/admin/**").hasRole("ADMIN") // Protège les routes /admin/** pour les ADMIN
+            .requestMatchers("/login", "/static/**", "/").permitAll() // Autorise l'accès à /login et /
             .anyRequest().authenticated() // Toute autre route nécessite une authentification
             .and()
             .formLogin(); // Active un formulaire de connexion par défaut
+            // .defaultSuccessUrl("/", true); // Redirige vers / après le login
         return http.build();
     }
 }

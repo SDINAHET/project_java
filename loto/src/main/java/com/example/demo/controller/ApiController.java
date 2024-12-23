@@ -21,7 +21,37 @@ public class ApiController {
         return "Bienvenue, Utilisateur!";
     }
 
-	@GetMapping
+	@PostMapping("/users")
+	public String createUser() {
+		return "Utilisateur créé";
+	}
+
+	@DeleteMapping("/users/{id}")
+	public String deleteUser(@PathVariable String id) {
+		return "Utilisateur supprimé";
+	}
+
+	@PutMapping("/users/{id}")
+	public String updateUser(@PathVariable String id) {
+		return "Utilisateur mis à jour";
+	}
+
+	// @PostMapping("/admin")
+	// public String createUser() {
+	// 	return "Utilisateur créé";
+	// }
+
+	// @DeleteMapping("/admin/{id}")
+	// public String deleteUser(@PathVariable String id) {
+	// 	return "Utilisateur supprimé";
+	// }
+
+	// @PutMapping("/admin/{id}")
+	// public String updateUser(@PathVariable String id) {
+	// 	return "Utilisateur mis à jour";
+	// }
+
+	@GetMapping("/admin/{id}")
     public String getAllUsers() {
         return "Liste des utilisateurs";
     }
@@ -30,4 +60,14 @@ public class ApiController {
     public String getUserById(@PathVariable String id) {
         return "Utilisateur avec ID : " + id;
     }
+
+	@RestController
+	public class HomeController {
+
+    @GetMapping("/")
+    public String home() {
+        return "Bienvenue sur la page d'accueil !";
+        // return "index"; // Le nom du fichier HTML sans l'extension
+    }
+}
 }
